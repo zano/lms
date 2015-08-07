@@ -16,6 +16,8 @@ namespace LMS.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        // Group
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -29,5 +31,12 @@ namespace LMS.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Document> Documents { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<Activity> Activity { get; set; }
+
     }
 }
