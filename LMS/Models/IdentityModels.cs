@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LMS.Models
 {
@@ -17,7 +18,9 @@ namespace LMS.Models
             return userIdentity;
         }
 
-        // Group
+        //[ForeignKey("Group")]
+        //public int? GroupId { get; set; }
+        public virtual Group Group { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -32,11 +35,14 @@ namespace LMS.Models
             return new ApplicationDbContext();
         }
 
+        //public DbSet<ApplicationUser> User { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Document> Documents { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Activity> Activity { get; set; }
+
+        //public System.Data.Entity.DbSet<LMS.Models.ApplicationUser> ApplicationUsers { get; set; }
 
     }
 }

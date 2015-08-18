@@ -166,12 +166,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508181647463_init.cs" />
+    <Compile Include="Migrations\201508181647463_init.Designer.cs">
+      <DependentUpon>201508181647463_init.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Activity.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\Group.cs" />
+    <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Schedule.cs" />
@@ -236,9 +241,12 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Content Include="Views\Groups\Create.cshtml" />
+    <Content Include="Views\Groups\Delete.cshtml" />
+    <Content Include="Views\Groups\Details.cshtml" />
+    <Content Include="Views\Groups\Edit.cshtml" />
+    <Content Include="Views\Groups\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -249,6 +257,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201508181647463_init.resx">
+      <DependentUpon>201508181647463_init.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

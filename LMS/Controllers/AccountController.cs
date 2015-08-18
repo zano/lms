@@ -52,6 +52,15 @@ namespace LMS.Controllers
             }
         }
 
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+        // GET: ... ( users to list? )
+        public ActionResult Index()
+        {
+            var dbList = db.Users.ToList();
+            return View(dbList);
+        }
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -79,7 +88,17 @@ namespace LMS.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+
+                    if (User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("Contact", "Home");
+                    }
+                    else 
+                    {
+                        return RedirectToAction("About", "Home");
+                    } 
+
+                    //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
