@@ -52,14 +52,6 @@ namespace LMS.Controllers
             }
         }
 
-        private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: ... ( users to list? )
-        public ActionResult Index()
-        {
-            var dbList = db.Users.ToList();
-            return View(dbList);
-        }
 
         //
         // GET: /Account/Login

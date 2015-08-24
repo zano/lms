@@ -51,7 +51,7 @@ namespace LMS.Migrations
                         userManager.Create(user, "foobar");
                         if (userName.StartsWith("t")) userManager.AddToRole(user.Id, "admin");
 
-                        if (userName.StartsWith("s")) user.Group = context.Groups.First(); //<-- Krasch p.g.a. First() när man kör seeden mot en tom databas? 
+                        if (userName.StartsWith("s")) user.Group = context.Groups.First(); 
                     }
                 }
             }

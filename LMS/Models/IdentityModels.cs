@@ -18,8 +18,8 @@ namespace LMS.Models
             return userIdentity;
         }
 
-        //[ForeignKey("Group")]
-        //public int? GroupId { get; set; }
+        [ForeignKey("Group")]
+        public int? GroupId { get; set; }
         public virtual Group Group { get; set; }
     }
 
@@ -35,14 +35,11 @@ namespace LMS.Models
             return new ApplicationDbContext();
         }
 
-        //public DbSet<ApplicationUser> User { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Document> Documents { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Activity> Activity { get; set; }
-
-        //public System.Data.Entity.DbSet<LMS.Models.ApplicationUser> ApplicationUsers { get; set; }
 
     }
 }
