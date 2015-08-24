@@ -17,7 +17,7 @@ namespace LMS.Controllers
         // GET: Users
         public ActionResult Index()
         {
-            return View(db.Users.ToList());
+            return View(db.Users.OrderBy(u => u.Email).ToList());
         }
 
         // GET: Users/Details/5
@@ -70,7 +70,18 @@ namespace LMS.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.GroupId = new SelectList(db.Groups, "Id", "Name", applicationUser.GroupId);
+
+            var GroupSelection = db.Groups.Select(g => new { 
+                Id = (int?)g.Id, 
+                Name = g.Name
+            }).ToList();
+            GroupSelection.Insert(0, new { 
+                Id = (int?)null,
+                Name = "-" 
+            });
+
+            ViewBag.GroupId  = new SelectList(GroupSelection, "Id", "Name", applicationUser.GroupId);       
+            
             return View(applicationUser);
         }
 
